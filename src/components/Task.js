@@ -2,22 +2,6 @@ import React from 'react';
 // import prop types 
 import PropTypes from 'prop-types';
 
-//define prop-types 
-Task.propTypes = {
-    //define the shape of task object
-    task: PropTypes.shape({
-        // define the data type of the id key value
-        id: PropTypes.string.isRequired,
-        // define the data type of the title key value
-        title: PropTypes.string.isRequired,
-        // define the data type of the state key value
-        state: PropTypes.string.isRequired
-    }),
-    // define data type of state updating functions 
-    onArchiveTask: PropTypes.func,
-    onPinTask: PropTypes.func 
-}
-
 const Task = ( { task: { id, title, state }}, onArchiveTask, onPinTask ) => {
     return (
         <div className={`list-item ${state}`} >
@@ -67,3 +51,18 @@ const Task = ( { task: { id, title, state }}, onArchiveTask, onPinTask ) => {
 
 export default Task;
 
+//define prop-types 
+Task.propTypes = {
+    //define the shape of task object
+    task: PropTypes.shape({
+        // define the data type of the id key value
+        id: PropTypes.string.isRequired,
+        // define the data type of the title key value
+        title: PropTypes.string.isRequired,
+        // define the data type of the state key value
+        state: PropTypes.string.isRequired
+    }),
+    // define data type of state updating functions 
+    onArchiveTask: PropTypes.func,
+    onPinTask: PropTypes.func 
+}
