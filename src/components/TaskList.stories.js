@@ -39,7 +39,7 @@ tasks:[
     //utilize the args data from the Default version of this component above  
     ...Default.args.tasks.slice(0,5),
     //input new data for pinned version of task on list 
-    { id:'6', title:'Task 6 (pinned)', state: "TAS_PINNED" },
+    { id:'6', title:'Task 6 (pinned)', state: "TASK_PINNED" },
 ],
 }
 
@@ -55,3 +55,4 @@ Empty.args = {
     ...Loading.args,
     loading: false,
 }
+
