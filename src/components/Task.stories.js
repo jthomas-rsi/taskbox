@@ -7,7 +7,7 @@ export default {
     title:'Task',
 };
 
-const Template = (args) => { < Task { ...args } /> }
+const Template = (args) => { return < Task { ...args } /> }
 
 export const Default = Template.bind({});
 Default.args = {
