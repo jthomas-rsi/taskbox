@@ -2,6 +2,7 @@ import React from 'react';
 // import prop types 
 import PropTypes from 'prop-types';
 
+// define function components with mocked props it would accept
 const Task = ( { task: { id, title, state }}, onArchiveTask, onPinTask ) => {
     return (
         <div className={`list-item ${state}`} >
