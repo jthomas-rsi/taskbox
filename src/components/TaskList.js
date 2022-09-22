@@ -1,17 +1,44 @@
 /* eslint-disable no-lone-blocks */
 import React from 'react';
-import PropTypes from 'prop-types';
+
+//import redux utilities to use data store actions and reducers 
+import { useDispatch, useSelector } from 'react-redux';
+
+//import redux store
+import { updateTaskState } from '../library/store';
 
 //import Task component
 import Task from './Task';
 
 // define composite component with mocked props it would accept
-const TaskList = ({ loading, tasks, onPinTask, onArchiveTask }) => {
-    // define event object
-    const events = {
-        onPinTask,
-        onArchiveTask,
-    };
+const TaskList = () => {
+// retrieve state of component from redux store
+const tasks = useSelector(( state )=>{
+    const tasksInOrder = [
+        ...state.taskbox.tasks.filter((task)=> task.state === 'TASK_PINNED' ),
+        ...state.taskbox.tasks.filter((task)=> task.state !== 'TASK_PINNED' ),
+    ];
+    const filteredTasks = tasksInOrder.filter(
+        ( task )=> task.state === 'TASK_INBOX' || 'TASK_PINNED'
+    );
+    return filteredTasks;
+});
+
+const { status } = useSelector(( state )=> state.taskbox )
+
+const dispatch = useDispatch();
+
+//function to dispatch component state to store, pinned task 
+const pinTask = ( value ) => {
+    dispatch(updateTaskState({ id:value, newTaskState: 'TASK_PINNED' }))
+ };
+
+//function to dispatch component state change to store, archived task 
+const archiveTask = ( value ) => {
+    dispatch(updateTaskState({ id:value, newTaskState: 'TASK_ARCHIVED' }))
+ };
+
+
     const LoadingRow = (
         <div  className='loading-item' >
             <span className='glow-checkbox'/>
@@ -22,7 +49,7 @@ const TaskList = ({ loading, tasks, onPinTask, onArchiveTask }) => {
     )
 
     //define conditional rendering for loading screen
-    { if( loading )
+    { if( status === 'loading' )
         return (
             <div className='list-items' data-testid='loading' key={'loading'} >
                 {LoadingRow}
@@ -46,38 +73,21 @@ const TaskList = ({ loading, tasks, onPinTask, onArchiveTask }) => {
             </div>
         )} 
 
-    const tasksInOrder = [
-        ...tasks.filter(( task )=>( task.state === 'TASK_PINNED' )),
-        ...tasks.filter(( task )=>( task.state !== 'TASK_PINNED' )),
-    ]
     
     //define default task list 
     return (
         <div className="list-items">
-          {tasksInOrder.map(task => (
-            <Task key={task.id} task={task} {...events} />
+          {tasks.map(task => (
+            <Task 
+                key={task.id}
+                task={task}
+                onPinTask={( task )=>{ pinTask(task) }}
+                onArchiveTask={( task )=>{ archiveTask(task) }}
+            />
           ))}
         </div>
       );    
-}
-
-
-//define props data type for TaskList component 
-TaskList.propTypes = {
-    //check to see if component is in loading state
-    loading: PropTypes.bool,
-    //define array to hold list of tasks
-    tasks: PropTypes.arrayOf(Task.propTypes.task).isRequired,
-    //mock func to update state for pinned task
-    onPinTask: PropTypes.func,
-    //mock func to update state for achieved task
-    onArchiveTask: PropTypes.func
-}
-
-//define initial or default props fro component 
-TaskList.defaultProps={
-    loading: false
-}
+};
 
 
 export default TaskList;

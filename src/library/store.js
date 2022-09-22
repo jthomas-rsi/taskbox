@@ -5,10 +5,10 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 // define the default tasks that will be displayed when the app/component loads
 const defaultTasks = [
-    { id:'1', title: 'Something', state: 'TASK_INBOX' },
-    { id:'2', title: 'Something more', state: 'TASK_INBOX' },
-    { id:'3', title: 'Something else', state: 'TASK_INBOX' },
-    { id:'4', title: 'Something again', state: 'TASK_INBOX' },
+    { id:'1', title: 'Learn Storybook', state: 'TASK_INBOX' },
+    { id:'2', title: 'Complete Storybook tutorials', state: 'TASK_INBOX' },
+    { id:'3', title: 'Build personal project to practice learned concepts', state: 'TASK_INBOX' },
+    { id:'4', title: 'Become storybook SME on team', state: 'TASK_INBOX' },
 ];
 
 const TaskBoxData = {

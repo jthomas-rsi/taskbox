@@ -41,18 +41,19 @@ tasks:[
     //input new data for pinned version of task on list 
     { id:'6', title:'Task 6 (pinned)', state: "TASK_PINNED" },
 ],
-}
+};
 
 export const Loading = Template.bind({})
 Loading.args = {
     //pass proper props for conditional render of loading screen 
     tasks: [],
     loading: true,
-}
+};
+
 export const Empty = Template.bind({})
 Empty.args = {
     //pass proper props for conditional render of Empty screen 
     ...Loading.args,
     loading: false,
-}
+};
 
