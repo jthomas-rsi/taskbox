@@ -17,3 +17,7 @@ const Template = () => <InboxScreen />;
 
 export const Default = Template.bind({})
 export const Error = Template.bind({})
+
+/**
+ * npx chromatic --project-token=d64754aae52e
+ */
