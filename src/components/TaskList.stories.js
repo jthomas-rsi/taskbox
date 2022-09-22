@@ -13,12 +13,12 @@ import { configureStore, createSlice } from '@reduxjs/toolkit';
 export const MockedState = {
     //utilize data imported from Task component stories 
     tasks:[
-        { ...TaskStories.Default.args.task, id:'1', title:'Task 1' },
-        { ...TaskStories.Default.args.task, id:'2', title:'Task 2' },
-        { ...TaskStories.Default.args.task, id:'3', title:'Task 3' },
-        { ...TaskStories.Default.args.task, id:'4', title:'Task 4' },
-        { ...TaskStories.Default.args.task, id:'5', title:'Task 5' },
-        { ...TaskStories.Default.args.task, id:'6', title:'Task 6' },
+        { ...TaskStories.Default.args.task, id:'1', title: 'Learn Storybook' },
+        { ...TaskStories.Default.args.task, id:'2', title: 'Complete Storybook tutorials' },
+        { ...TaskStories.Default.args.task, id:'3', title: 'Build personal project to practice learned concepts' },
+        { ...TaskStories.Default.args.task, id:'4', title: 'Become storybook SME on team' },
+        { ...TaskStories.Default.args.task, id:'5', title:'Impress my manager with all my storybook skills' },
+        { ...TaskStories.Default.args.task, id:'6', title:'Change name to "The Storybook Master"' },
     ],
     status: 'idle',
     error: null
@@ -79,7 +79,7 @@ WithPinnedTasks.decorators = [
     ( story )=>{
         const pinnedtasks = [
             ...MockedState.tasks.slice(0,5),
-            { id: '6' , title: 'Task 6 (pinned)' , state:'TASK_PINNED' },
+            { id: '6' , title: 'Change name to "The Storybook Master" (pinned)', state:'TASK_PINNED' },
         ];
         return (
             <Mockstore
