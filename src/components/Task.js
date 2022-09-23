@@ -26,11 +26,12 @@ const Task = ( { task: { id, title, state }}, onArchiveTask, onPinTask ) => {
 
             <label htmlFor='title' aria-label={title} className='title' >
                 <input
-                    type='text'
+                    type="text"
                     value={title}
-                    readOnly
-                    name='title'
-                    placeholder='Input title'
+                    readOnly={true}
+                    name="title"
+                    placeholder="Input title"
+                    style={{ textOverflow: 'ellipsis' }}
                 />
             </label>
 
