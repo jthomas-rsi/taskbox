@@ -12,8 +12,8 @@ jobs:
 
     #steps
     steps:
-      -uses: actions/checkout@v1
-      -run: npm
-      -uses: chromaui/action@v1
-      with:
-        projectToken: ${{d64754aae52e}} 
+      uses: actions/checkout@v1
+      run: npm
+      uses: chromaui/action@v1
+        with:
+          projectToken: ${{d64754aae52e}} 
