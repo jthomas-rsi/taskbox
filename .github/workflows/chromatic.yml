@@ -1,19 +1,13 @@
-# name of my workflow 
 name: 'Chromatic Deployment'
 
-# trigger event for workflow
 on: push
 
-#all the jobs that should happen in the workflow
 jobs:
   test:
-    #operating system 
     run-ons: ubuntu-latest
-
-    #steps
     steps:
-      uses: actions/checkout@v1
-      run: npm
-      uses: chromaui/action@v1
-      with:
+      - uses: actions/checkout@v1
+      - run: npm
+      - uses: chromaui/action@v1
+        with:
           projectToken: ${{d64754aae52e}} 
